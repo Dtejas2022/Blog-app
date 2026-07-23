@@ -17,11 +17,42 @@ const createBlog = async (req, res) => {
             author
         });
 
-        return res.status(200).json({message:"Blog created Succesfully", newBlog:newBlog});
+        return res.status(201).json({message:"Blog created Succesfully", newBlog:newBlog});
     } catch (error) {
         console.error("Internal server error", error);
-        return res.status(401).json({messsage:"Internal server error", error:error});
+        return res.status(500).json({messsage:"Internal server error", error:error});
     }
 };
 
-module.exports = {createBlog};
+// display all blogs
+
+const getAllBlogs = async (req,res) => {
+    try{
+        const allBlogs = await Blogs.find().populate('author', 'name email');
+
+        if(allBlogs.length<1){
+            return res.status(500).json({message:"Failed to get all blogs"})
+        }
+
+        return res.status(200).json({message:"All blogs fetched sucessfully", blogs:allBlogs});
+    }
+    catch(error) {
+            console.error("Internal server error",error);
+            return res.status(500).json({message:"internal server error", error});
+    }
+};
+
+//get single blog by id
+// const findSingleBlog = async (req,res)=> {
+//     try {
+//         const Id = req.body;
+//         if(Id){
+//             res.status(500).json()
+//         }
+//     } catch (error) {
+        
+//     }
+// }
+
+
+module.exports = {createBlog, getAllBlogs};
