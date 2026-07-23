@@ -95,8 +95,9 @@ const logInUser = async (req, res) => {
 
 
 const getProfile = async (req,res)=>{
+    // const {_id} = req.boady;
     try {
-        const user = await User.findById(req.user.id);
+        const user = await User.findById(req.user.name);
 
         if (!user) {
             return res.status(404).json({
