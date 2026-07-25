@@ -45,7 +45,7 @@ const getAllBlogs = async (req,res) => {
 // get single blog by id
 const findSingleBlog = async (req,res)=> {
     try {
-        const data = await Blogs.findById(req.params.id).populate('author');
+        const data = await Blogs.findById(req.params.id).populate('author','name email');
         if(data){
             return res.status(200).json({message:"Blog found", data : data});
         }
