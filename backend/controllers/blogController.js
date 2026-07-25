@@ -112,10 +112,12 @@ const deleteBlog = async (req,res)=>{
             });
         }
 
-        const deleteBlog = await blog.delete();
+        const deleteBlog = await blog.deleteOne();
 
         res.status(200).json({message:"Blog deleted Successfully"});
     } catch (error) {
+        console.error("Delete Blog Error:", error);
+
         res.status(500).json({
         message: "Internal server error"
         });
@@ -123,4 +125,4 @@ const deleteBlog = async (req,res)=>{
 }
 
 
-module.exports = {createBlog, getAllBlogs, findSingleBlog, updateBlog};
+module.exports = {createBlog, getAllBlogs, findSingleBlog, updateBlog, deleteBlog};
