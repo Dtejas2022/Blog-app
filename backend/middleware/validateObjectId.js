@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
-const {objId} = req.query;
+const validateObjectId = async (req, res, next) => {
+    const {id} = req.params;
 
-if(objId === mongoose.Types.ObjectId.isValid()){
-        res.status(200).json({message:'id is valid'});
-        next();
-}
-else{
-    return res.status(500).json({message:'id is notvalid'});
-}
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).json({message:"Invalid Blog Id"});
+    }
+    next();
+};
+
+module.exports = validateObjectId;
