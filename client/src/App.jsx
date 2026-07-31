@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/LogIn";
+import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
 import CreateBlog from "./pages/CreateBlog";
 import EditBlog from "./pages/EditBlog";
 import SingleBlog from "./pages/SingleBlog";
+import Navbar from "./components/Navbar";
 
 function App() {
 
   return (
     <BrowserRouter>
+      <Navbar/>
       <Routes>
         <Route 
           path="/" 
