@@ -16,6 +16,9 @@ function LogIn() {
             });
 
             console.log(res.data);
+
+            localStorage.setItem('token', res.data.token);
+            console.log('token saved successfully');
         } catch (error) {
             console.log("failed Login", error);
         }
