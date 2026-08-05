@@ -20,12 +20,17 @@ function Home() {
             <h1>
                 Home Page
             </h1>
-
-            {blogs.map((blog) => (
-                <h1>{blog.title}</h1>
-                <h2>{blog.author}</h2>
-                <h3>{blog.content}</h3>
-            ))}
+            <ul >
+               {
+                blogs.map((blog)=>(
+                    <div key={blog._id}>
+                    <h2>{blog.title}</h2>
+                    <li >{blog.content}</li>
+                    <li>{blog.author.name}</li>
+                    </div>
+                ))
+               }
+            </ul>
         </>
     )
 }
