@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
 function SingleBlog(){
     const [blog, setBlog]= useState(null);
     const {id} = useParams()
@@ -18,11 +21,7 @@ function SingleBlog(){
                     <p>{blog.author.name}</p>
                     </div>) : (
                         <h6>Loading....</h6>
-                    ) }
-                    
-              
-                    
-                
+                    ) }              
         </>
     )
 }
